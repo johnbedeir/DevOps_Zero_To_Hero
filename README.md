@@ -2,7 +2,7 @@
 
 ## Python Flask Application
 
-This is a simple Python Flask application that displays "Hello, Docker with Python!" when accessed. This guide will walk you through running the application locally and using Docker.
+DevOps_Zero_To_Hero repository! This project is designed to guide you through the journey of mastering DevOps practices, starting from a simple Python Flask application and progressively moving through various stages. The project begins with running the application locally, then to Docker, Docker Compose, Kubernetes, and then to the cloud.
 
 ## Prerequisites
 
