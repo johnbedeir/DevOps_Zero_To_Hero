@@ -1,5 +1,6 @@
 # DevOps Zero to Hero
 
+<img src=imgs/zero-to-hero-cover.png>
 ## Python Flask Application
 
 DevOps_Zero_To_Hero repository! This project is designed to guide you through the journey of mastering DevOps practices, starting from a simple Python Flask application and progressively moving through various stages. The project begins with running the application locally, then to Docker, Docker Compose, Kubernetes, and then to the cloud.
@@ -82,3 +83,56 @@ To remove the docker image, use:
 ```sh
 docker rmi zero-to-hero-img
 ```
+
+## Automating Docker Container with Ansible
+
+To further streamline the process of building and running the Docker container, you can use the following Ansible playbook `playbook.yml`. This playbook automates stopping and removing any existing containers and images, building a new Docker image, tagging and pushing it to Docker Hub, and finally running the container.
+
+### Running the Playbook
+
+1. Ensure you have Ansible installed on your machine.
+2. Save the above playbook to a file named `playbook.yml`.
+3. Run the playbook using the following command:
+
+   ```sh
+   ansible-playbook playbook.yml
+   ```
+
+This playbook simplifies the process of managing your Docker container by automating the repetitive tasks, allowing you to focus on development and deployment.
+
+## Automating Docker Container Management with Shell Scripts
+
+In addition to using Ansible, you can also automate the process of managing your Docker container using shell scripts. Below are two scripts: one for cleaning up existing Docker containers and images, and another for rebuilding and running the Docker container.
+
+### Shell Scripts
+
+#### `cleanup.sh`
+
+The `cleanup.sh` script stops and removes any existing Docker containers and images.
+
+#### `rebuild.sh`
+
+The `rebuild.sh` script stops and removes any existing Docker containers and images, builds a new Docker image from the Dockerfile, and runs the Docker container.
+
+### Running the Scripts
+
+Make sure the scripts are executable by running the following commands:
+
+```sh
+chmod +x cleanup.sh
+chmod +x rebuild.sh
+```
+
+3. Run the cleanup script to remove any existing containers and images:
+
+   ```sh
+   ./cleanup.sh
+   ```
+
+4. Run the rebuild script to build the Docker image and run the container:
+
+   ```sh
+   ./rebuild.sh
+   ```
+
+These scripts provide a straightforward and efficient way to manage your Docker containers and images, ensuring that you can quickly clean up and rebuild your application environment as needed.
