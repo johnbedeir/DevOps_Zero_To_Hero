@@ -1,6 +1,7 @@
 # DevOps Zero to Hero
 
 <img src=imgs/zero-to-hero-cover.png>
+
 ## Python Flask Application
 
 DevOps_Zero_To_Hero repository! This project is designed to guide you through the journey of mastering DevOps practices, starting from a simple Python Flask application and progressively moving through various stages. The project begins with running the application locally, then to Docker, Docker Compose, Kubernetes, and then to the cloud.
