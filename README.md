@@ -1,5 +1,7 @@
 # DevOps Zero to Hero
 
+## [Watch YouTube Video Here](https://www.youtube.com/watch?v=Yk_wAh57_YU)
+
 <img src=imgs/zero-to-hero-cover.png>
 
 ## Python Flask Application
