@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zero-to-hero-service
+  namespace: zero-to-hero
+  labels:
+    app: zero-to-hero
+spec:
+  selector:
+    app: zero-to-hero
+  type: NodePort 
+  ports:
+  - port: 5000
+    targetPort: 5000

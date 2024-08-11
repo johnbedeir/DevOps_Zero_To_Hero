@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zero-to-hero-deployment
+  namespace: zero-to-hero
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zero-to-hero
+  template:
+    metadata:
+      labels:
+        app: zero-to-hero
+    spec:
+      containers:
+      - name: zero-to-hero
+        image: triple3a/zero-to-hero:latest  # Replace with your Docker image
+        ports:
+        - containerPort: 5000
