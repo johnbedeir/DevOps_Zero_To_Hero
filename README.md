@@ -139,3 +139,124 @@ chmod +x rebuild.sh
    ```
 
 These scripts provide a straightforward and efficient way to manage your Docker containers and images, ensuring that you can quickly clean up and rebuild your application environment as needed.
+
+---
+
+## Deploying the Application on Minikube Using Kubernetes
+
+In this section, we will deploy the `DevOps Zero to Hero` application on Minikube using Kubernetes manifest files located in the `k8s` directory. The deployment will consist of a Kubernetes Deployment and a Service that exposes the application.
+
+### Prerequisites
+
+- Minikube installed on your machine.
+- kubectl configured to interact with your Minikube cluster.
+
+### Steps to Deploy
+
+1. **Start Minikube**
+
+   First, start Minikube if it isn't already running:
+
+   ```sh
+   minikube start
+   ```
+
+2. **Navigate to the Kubernetes Manifests Directory**
+
+   Change your directory to the `k8s` folder where the Kubernetes manifests (`deployment.yml` and `service.yml`) are stored.
+
+   ```sh
+   cd k8s
+   ```
+
+3. **Create a Namespace**
+
+   It's a good practice to deploy your resources into a specific namespace. Create a namespace named `zero-to-hero`:
+
+   ```sh
+   kubectl create namespace zero-to-hero
+   ```
+
+4. **Deploy the Application**
+
+   Apply the deployment manifest to create the Deployment:
+
+   ```sh
+   kubectl apply -f deployment.yml -n zero-to-hero
+   ```
+
+   This command will deploy two replicas of the `zero-to-hero` application using the Docker image `triple3a/zero-to-hero:latest`.
+
+5. **Expose the Application with a Service**
+
+   Next, apply the service manifest to create a Service that exposes the application on a NodePort:
+
+   ```sh
+   kubectl apply -f service.yml -n zero-to-hero
+   ```
+
+   The service will expose the application on a NodePort, allowing you to access it through Minikube's IP address.
+
+6. **Access the Application**
+
+   To access the application, first, retrieve the URL using the following command:
+
+   ```sh
+   minikube service zero-to-hero-service -n zero-to-hero --url
+   ```
+
+   The command will output a URL that you can open in your web browser. This URL will direct you to the `zero-to-hero` application running inside the Minikube cluster.
+
+### Managing the Deployment with k9s
+
+`k9s` is a powerful terminal-based UI to manage your Kubernetes clusters. It simplifies the management of resources within your cluster, including deployments, services, and more.
+
+#### Accessing Your Cluster with k9s
+
+1. **Start k9s**
+
+   Launch `k9s` by simply typing the following command in your terminal:
+
+   ```sh
+   k9s
+   ```
+
+2. **Switch to the `zero-to-hero` Namespace**
+
+   By default, `k9s` shows resources in the `default` namespace. To switch to the `zero-to-hero` namespace, type:
+
+   ```sh
+   :zero-to-hero
+   ```
+
+   This will filter the view to only show resources within the `zero-to-hero` namespace.
+
+#### Scaling the Deployment
+
+To scale your `zero-to-hero` deployment:
+
+1. Navigate to the `Deployments` view by selecting `Deployments` from the `k9s` menu or by typing `deploy` in the command bar.
+2. Select the `zero-to-hero-deployment` by navigating to it using the arrow keys.
+3. Press `S` to scale the deployment. You will be prompted to enter the desired number of replicas.
+4. Enter the new replica count and press `Enter`.
+
+#### Updating the Deployment
+
+If you need to update the Docker image used by your deployment:
+
+1. Select the `zero-to-hero-deployment` in the `Deployments` view.
+2. Press `E` to edit the deployment manifest directly in `k9s`.
+3. Navigate to the `spec` section and update the `image` field to the new Docker image version.
+4. Save and exit the editor. `k9s` will automatically apply the changes to your cluster.
+
+#### Deleting the Deployment and Service
+
+To delete the `zero-to-hero` deployment and service:
+
+1. Navigate to the `Deployments` view and select `zero-to-hero-deployment`.
+2. Press `D` to delete the deployment.
+3. Confirm the deletion when prompted.
+
+   Repeat the process for the `Services` view to delete the `zero-to-hero-service`.
+
+   Alternatively, you can delete all resources in the `zero-to-hero` namespace by selecting the namespace in `k9s` and pressing `ctrl+d`.
