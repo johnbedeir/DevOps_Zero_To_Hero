@@ -111,11 +111,11 @@ In addition to using Ansible, you can also automate the process of managing your
 
 #### `cleanup.sh`
 
-The `cleanup.sh` script stops and removes any existing Docker containers and images.
+The `cleanup.sh` script stops and removes any existing Docker containers and images, delete namespace and stop minikube.
 
-#### `rebuild.sh`
+#### `build.sh`
 
-The `rebuild.sh` script stops and removes any existing Docker containers and images, builds a new Docker image from the Dockerfile, and runs the Docker container.
+The `build.sh` script stops and removes any existing Docker containers and images, builds a new Docker image from the Dockerfile, push the docker image to Docker Registry, start minikube, create namespace and deploy the application.
 
 ### Running the Scripts
 
@@ -123,7 +123,7 @@ Make sure the scripts are executable by running the following commands:
 
 ```sh
 chmod +x cleanup.sh
-chmod +x rebuild.sh
+chmod +x build.sh
 ```
 
 3. Run the cleanup script to remove any existing containers and images:
