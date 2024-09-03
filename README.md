@@ -135,7 +135,7 @@ chmod +x build.sh
 4. Run the rebuild script to build the Docker image and run the container:
 
    ```sh
-   ./rebuild.sh
+   ./build.sh
    ```
 
 These scripts provide a straightforward and efficient way to manage your Docker containers and images, ensuring that you can quickly clean up and rebuild your application environment as needed.
